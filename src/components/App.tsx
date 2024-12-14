@@ -1,10 +1,14 @@
 import { LuDices } from 'react-icons/lu';
-import { generateCode } from '../utils/string';
 import Button from './Button/Button';
 import CodeDisplay from './CodeDisplay/CodeDisplay';
 import Header from './Header/Header';
+import { presetTags } from './constants/tags';
+import useTagStore from '../store/tagStore';
+import { generateCode, choice } from '../utils/utils';
 
 const App = () => {
+	const { updateTag } = useTagStore((state) => state);
+
 	return (
 		<>
 			<Header />
@@ -15,6 +19,7 @@ const App = () => {
 					icon={<LuDices className='w-5 h-5' />}
 					border
 					iconPos='right'
+					onClick={() => updateTag(choice(presetTags))}
 				>
 					Randomize
 				</Button>

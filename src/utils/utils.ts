@@ -1,3 +1,12 @@
+/**
+ * Picks a random item from an array.
+ * @param arr The array to choose from.
+ * @returns A random item from the array.
+ */
+export const choice = <T>(arr: T[]) => {
+	return arr[Math.floor(Math.random() * arr.length)];
+};
+
 export const generateCode = () => {
 	return `$Optional: Force Nametag "" for Local Player [Fizzi]
 	*When playing online, nametag ____ will show above 
