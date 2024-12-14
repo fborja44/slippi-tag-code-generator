@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	@apply bg-midnight-950 text-midnight-300;
+}
+
+body {
+	@apply max-w-[900px] mx-auto;
+}
+
+.container-row {
+	@apply flex flex-row items-center;
+}
+
+.container-col {
+	@apply flex flex-col items-center;
+}
+
+.container-center {
+	@apply flex flex-row items-center justify-center;
+}
