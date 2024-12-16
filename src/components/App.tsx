@@ -2,12 +2,12 @@ import { LuDices } from 'react-icons/lu';
 import Button from './Button/Button';
 import CodeDisplay from './CodeDisplay/CodeDisplay';
 import Header from './Header/Header';
-import { presetTags } from './constants/tags';
-import useTagStore from '../store/tagStore';
+import useTagStore, { TagState } from '../store/tagStore';
 import { generateCode, choice } from '../utils/utils';
+import presetTags from '../data/tags.json';
 
 const App = () => {
-	const { updateTag } = useTagStore((state) => state);
+	const { updateTag } = useTagStore((state: TagState) => state);
 
 	return (
 		<>

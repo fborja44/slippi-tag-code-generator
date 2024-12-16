@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-interface TagState {
+export interface TagState {
 	tag: string;
 	updateTag: (newTag: string) => void;
 }
