@@ -6,14 +6,16 @@ const CodeDisplay = () => {
 
 	return (
 		<div className='container-col gap-4'>
-			<input
-				type='text'
-				className='container-center bg-midnight-900 text-midnight-400 placeholder:text-midnight-700/80 rounded-lg w-48 h-20 text-center text-6xl font-bold tracking-wider outline-none'
-				maxLength={4}
-				placeholder='TAG!'
-				value={tag}
-				onChange={(event) => updateTag(event.target.value)}
-			/>
+			<div className='container-center bg-midnight-900 rounded-lg h-20 w-52 pb-2'>
+				<input
+					type='text'
+					className='bg-transparent text-midnight-50 placeholder:text-midnight-700/80 w-full h-full text-center text-6xl font-bold tracking-wider outline-none'
+					maxLength={4}
+					placeholder='TAG!'
+					value={tag}
+					onChange={(event) => updateTag(event.target.value)}
+				/>
+			</div>
 			<Indicator className='h-10 w-auto text-melee-red' />
 		</div>
 	);

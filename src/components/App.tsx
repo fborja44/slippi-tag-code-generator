@@ -5,9 +5,10 @@ import Header from './Header/Header';
 import useTagStore, { TagState } from '../store/tagStore';
 import { generateCode, choice } from '../utils/utils';
 import presetTags from '../data/tags.json';
+import CopyButton from './Button/CopyButton';
 
 const App = () => {
-	const { updateTag } = useTagStore((state: TagState) => state);
+	const { tag, updateTag } = useTagStore((state: TagState) => state);
 
 	return (
 		<>
@@ -23,8 +24,9 @@ const App = () => {
 				>
 					Randomize
 				</Button>
-				<code className='w-full h-full whitespace-pre-line bg-midnight-900 text-midnight-400 text-sm rounded-xl p-4'>
-					{generateCode()}
+				<code className='relative w-full h-full whitespace-pre-line bg-midnight-900 text-midnight-400 text-sm rounded-xl p-4'>
+					<CopyButton />
+					<span>{generateCode(tag)}</span>
 				</code>
 			</main>
 		</>

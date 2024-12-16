@@ -2,7 +2,6 @@
 export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
-		fontFamily: {},
 		extend: {
 			colors: {
 				melee: {
@@ -25,6 +24,9 @@ export default {
 					900: '#2b2738',
 					950: '#14111c',
 				},
+			},
+			fontFamily: {
+				melee: ['A-OTF Folk Pro B', 'sans-serif'],
 			},
 		},
 	},
