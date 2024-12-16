@@ -1,4 +1,5 @@
 import Indicator from '../../assets/Indicator.svg?react';
+import { charSet } from '../../data/codes';
 import useTagStore from '../../store/tagStore';
 
 const CodeDisplay = () => {
@@ -13,7 +14,12 @@ const CodeDisplay = () => {
 					maxLength={4}
 					placeholder='TAG!'
 					value={tag}
-					onChange={(event) => updateTag(event.target.value)}
+					onChange={(event) => {
+						const value = event.target.value;
+						if (value.split('').every((char: string) => charSet.has(char))) {
+							updateTag(event.target.value);
+						}
+					}}
 				/>
 			</div>
 			<Indicator className='h-10 w-auto text-melee-red' />

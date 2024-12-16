@@ -1,3 +1,5 @@
+import codeSet, { charSet } from '../data/codes';
+
 /**
  * Picks a random item from an array.
  * @param arr The array to choose from.
@@ -7,8 +9,36 @@ export const choice = <T>(arr: T[]) => {
 	return arr[Math.floor(Math.random() * arr.length)];
 };
 
+/**
+ * Adds a space to the middle of a string.
+ * @param str The string to add a space to.
+ * @returns A new string with a space in the middle.
+ */
+export const addMiddleSpace = (str: string) => {
+	const mid = Math.floor(str.length / 2);
+	return str.slice(0, mid) + ' ' + str.slice(mid);
+};
+
+/**
+ * Vanilla Behavior allows 4 characters of ANY type.
+ * @param tag The tag to generate a gecko code for.
+ * @returns The final code if valid. Otherwise, returns null.
+ */
 export const generateCode = (tag: string) => {
-	return `$Optional: Force Nametag "" for Local Player [Fizzi]
+	// Invalid length
+	if (tag.length > 4) return null;
+
+	// Invalid character
+	if (tag.split('').some((char) => !charSet.has(char))) return null;
+
+	// Map characters to string, pad with 0s
+	let result = '';
+	for (const char of tag) {
+		result += codeSet[char];
+	}
+	result = addMiddleSpace(result.padEnd(16, '0'));
+
+	return `$Optional: Force Nametag '${tag}' for Local Player [Fizzi]
 *When playing online, nametag ____ will show above 
 *your character.
 *Will not cause desyncs when playing online
@@ -23,7 +53,7 @@ C20355B4 00000008 #Force Nametag
 1C9F0E90 00000000
 C22FD1EC 0000000E
 48000010 4E800021
-00000000 00000000 #${tag}
+${result} #Code for '${tag}'
 3C608048 80639D30
 5463443E 2C030208
 40820020 806DB61C

@@ -26,7 +26,7 @@ const App = () => {
 				</Button>
 				<code className='relative w-full h-full whitespace-pre-line bg-midnight-900 text-midnight-400 text-sm rounded-xl p-4'>
 					<CopyButton />
-					<span>{generateCode(tag)}</span>
+					<span>{generateCode(tag) || 'Invalid Code'}</span>
 				</code>
 			</main>
 			<footer className='container-center w-full pb-6 text-midnight-400'>
