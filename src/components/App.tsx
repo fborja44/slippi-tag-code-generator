@@ -29,6 +29,18 @@ const App = () => {
 					<span>{generateCode(tag)}</span>
 				</code>
 			</main>
+			<footer className='container-center w-full pb-6 text-midnight-400'>
+				<small>
+					Created by{' '}
+					<a
+						href='https://github.com/fborja44'
+						target='_blank'
+						className='text-midnight-300 hover:text-midnight-200 transition-colors'
+					>
+						beta
+					</a>
+				</small>
+			</footer>
 		</>
 	);
 };

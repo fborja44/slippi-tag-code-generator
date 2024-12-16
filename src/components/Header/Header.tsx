@@ -11,10 +11,17 @@ const Header = () => {
 			</div>
 			<nav className='container-row gap-2'>
 				<Button>How To Use</Button>
-				<Button>Gecko Code By Fizzi</Button>
-				<Button border icon={<VscGithub className='h-5 w-5' />}>
-					GitHub
-				</Button>
+				<a href='https://slippi.gg/' target='_blank'>
+					<Button>Gecko Code By Fizzi</Button>
+				</a>
+				<a
+					href='https://github.com/fborja44/slippi-tag-code-generator'
+					target='_blank'
+				>
+					<Button border icon={<VscGithub className='h-5 w-5' />}>
+						GitHub
+					</Button>
+				</a>
 			</nav>
 		</header>
 	);
