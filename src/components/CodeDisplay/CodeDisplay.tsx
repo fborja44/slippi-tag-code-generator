@@ -1,4 +1,3 @@
-import Indicator from '../../assets/Indicator.svg?react';
 import { charSet } from '../../data/codes';
 import useTagStore from '../../store/tagStore';
 
@@ -7,10 +6,10 @@ const CodeDisplay = () => {
 
 	return (
 		<div className='container-col gap-4'>
-			<div className='container-center bg-midnight-900 rounded-lg h-20 w-52 pb-2'>
+			<div className='container-center bg-menu-blue border-4 border-menu-blue-dark rounded-2xl h-20 w-[448px] pb-2'>
 				<input
 					type='text'
-					className='bg-transparent text-midnight-50 placeholder:text-midnight-700/80 w-full h-full text-center text-6xl font-bold tracking-wider outline-none'
+					className='bg-transparent text-black placeholder:text-midnight-700/80 w-full h-full text-center text-6xl font-bold tracking-[0.5em] outline-none'
 					maxLength={4}
 					placeholder='TAG!'
 					value={tag}
@@ -22,7 +21,6 @@ const CodeDisplay = () => {
 					}}
 				/>
 			</div>
-			<Indicator className='h-10 w-auto text-melee-red' />
 		</div>
 	);
 };

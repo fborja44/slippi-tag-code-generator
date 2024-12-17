@@ -16,8 +16,8 @@ const Button = ({
 }: ButtonProps) => {
 	return (
 		<button
-			className={`container-center gap-1.5 px-3 py-1.5 rounded-lg text-[16px] font-medium hover:text-midnight-500 transition-colors ${
-				border ? 'border border-midnight-400 hover:border-midnight-600' : ''
+			className={`container-center gap-1.5 px-3 py-1.5 rounded-lg text-[16px] font-medium hover:text-midnight-300 transition-colors ${
+				border ? 'border border-midnight-400 hover:border-midnight-300' : ''
 			} ${className}`}
 			onClick={onClick}
 		>

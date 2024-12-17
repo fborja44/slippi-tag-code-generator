@@ -1,35 +1,36 @@
-import { LuDices } from 'react-icons/lu';
-import Button from './Button/Button';
 import CodeDisplay from './CodeDisplay/CodeDisplay';
 import Header from './Header/Header';
-import useTagStore, { TagState } from '../store/tagStore';
-import { generateCode, choice } from '../utils/utils';
-import presetTags from '../data/tags.json';
-import CopyButton from './Button/CopyButton';
+import Keyboard from './Keyboard/Keyboard';
+import AlphabetButton from './Menu/AlphabetButton/AlphabetButton';
+import ClearButton from './Menu/ClearButton/ClearButton';
+import MenuButton from './Menu/MenuButton/MenuButton';
 
 const App = () => {
-	const { tag, updateTag } = useTagStore((state: TagState) => state);
-
 	return (
 		<>
 			<Header />
-			<main className='container-col gap-8 h-full max-w-[500px] py-10 mx-auto'>
-				<CodeDisplay />
-				<Button
-					className='w-full'
-					icon={<LuDices className='w-5 h-5' />}
-					border
-					iconPos='right'
-					onClick={() => updateTag(choice(presetTags))}
-				>
-					Randomize
-				</Button>
-				<code className='relative w-full h-full whitespace-pre-line bg-midnight-900 text-midnight-400 text-sm rounded-xl p-4'>
-					<CopyButton />
-					<span>{generateCode(tag) || 'Invalid Code'}</span>
-				</code>
+			<main className='container-row justify-center gap-3 h-full py-10 mx-auto'>
+				<section className='container-col gap-3'>
+					<CodeDisplay />
+					<Keyboard />
+					<MenuButton>Copy Code</MenuButton>
+				</section>
+				<section className='container-col items-end gap-4 self-end'>
+					<MenuButton>Preview</MenuButton>
+					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
+						<div className='container-col gap-1 w-fit'>
+							<AlphabetButton character='あ' />
+							<AlphabetButton character='ア' />
+							<AlphabetButton character='A' />
+						</div>
+						<ClearButton />
+						<button className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black'>
+							Random
+						</button>
+					</div>
+				</section>
 			</main>
-			<footer className='container-center w-full pb-6 text-midnight-400'>
+			<footer className='h-[64px] container-center w-full pb-6 text-midnight-400'>
 				<small>
 					Created by{' '}
 					<a

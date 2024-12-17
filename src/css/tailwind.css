@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,8 +9,12 @@
 }
 
 body {
-	@apply max-w-[900px] mx-auto;
+	@apply max-w-[1200px] mx-auto;
 }
+
+/* main {
+	min-height: calc(100vh - 128px);
+} */
 
 .container-row {
 	@apply flex flex-row items-center;

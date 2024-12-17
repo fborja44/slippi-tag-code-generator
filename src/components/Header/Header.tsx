@@ -4,9 +4,9 @@ import { VscGithub } from 'react-icons/vsc';
 
 const Header = () => {
 	return (
-		<header className='container-row justify-between w-full h-16'>
+		<header className='container-row justify-between w-full h-[64px] text-midnight-400'>
 			<div className='container-row gap-2.5'>
-				<GiGecko className='w-7 h-7 text-midnight-400' />
+				<GiGecko className='w-7 h-7' />
 				<h1 className='text-xl font-bold'>melee tag code generator</h1>
 			</div>
 			<nav className='container-row gap-2'>
