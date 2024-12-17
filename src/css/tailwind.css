@@ -8,6 +8,13 @@
 	@apply bg-midnight-950 text-midnight-300 font-melee;
 }
 
+html {
+	background-image: url(../assets/grid.svg);
+	object-fit: cover;
+	background-position: center;
+	background-size: cover;
+}
+
 body {
 	@apply max-w-[1200px] mx-auto;
 }
