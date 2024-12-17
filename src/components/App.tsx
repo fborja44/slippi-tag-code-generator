@@ -4,6 +4,8 @@ import Keyboard from './Keyboard/Keyboard';
 import AlphabetButton from './Menu/AlphabetButton/AlphabetButton';
 import ClearButton from './Menu/ClearButton/ClearButton';
 import MenuButton from './Menu/MenuButton/MenuButton';
+import { IoCopy } from 'react-icons/io5';
+import { MdBackspace } from 'react-icons/md';
 
 const App = () => {
 	return (
@@ -13,10 +15,12 @@ const App = () => {
 				<section className='container-col gap-3'>
 					<CodeDisplay />
 					<Keyboard />
-					<MenuButton>Copy Code</MenuButton>
+					<MenuButton icon={<IoCopy className='h-10 w-10' />}>
+						Copy Code
+					</MenuButton>
 				</section>
 				<section className='container-col items-end gap-4 self-end'>
-					<MenuButton>Preview</MenuButton>
+					<MenuButton icon={<MdBackspace />} />
 					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
 						<div className='container-col gap-1 w-fit'>
 							<AlphabetButton character='あ' />
