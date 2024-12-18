@@ -5,6 +5,7 @@ import {
 	EnglishLowerKeyboard,
 	HiraganaKeyboard,
 	KatakanaKeyboard,
+	SymbolKeyboard,
 } from '../data/keyboards';
 
 const useKeyPressed = (key: string) => {
@@ -19,6 +20,15 @@ const useKeyPressed = (key: string) => {
 			e.preventDefault();
 
 			// Change Keyboards automatically
+			if (keyboard !== KeyboardSet.symbol) {
+				if (
+					!EnglishLowerKeyboard.includes(e.key.toLocaleLowerCase()) && // Prioritize English keyboard
+					SymbolKeyboard.includes(e.key.toLocaleLowerCase())
+				) {
+					setKeyboard(KeyboardSet.symbol);
+					addCharacter(e.key);
+				}
+			}
 			if (
 				keyboard !== KeyboardSet.englishLower &&
 				keyboard !== KeyboardSet.englishUpper

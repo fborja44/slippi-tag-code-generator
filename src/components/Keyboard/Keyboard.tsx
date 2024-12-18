@@ -6,6 +6,7 @@ import {
 	EnglishUpperKeyboard,
 	HiraganaKeyboard,
 	KatakanaKeyboard,
+	SymbolKeyboard,
 } from '../../data/keyboards';
 import useKeyPressed from '../../hooks/useKeyPressed';
 
@@ -32,6 +33,9 @@ const Keyboard = () => {
 		case KeyboardSet.katakana:
 			keyboardSet = KatakanaKeyboard;
 			break;
+		case KeyboardSet.symbol:
+			keyboardSet = SymbolKeyboard;
+			break;
 		default:
 			keyboardSet = EnglishUpperKeyboard;
 			break;
@@ -39,7 +43,7 @@ const Keyboard = () => {
 
 	return (
 		<div className='grid grid-cols-10 w-fit gap-2.5 flex-wrap'>
-			{Array.from(keyboardSet).map((character, i) => (
+			{keyboardSet.map((character, i) => (
 				<Key character={character} key={`key-${character}-${i}`} />
 			))}
 		</div>

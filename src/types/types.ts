@@ -3,4 +3,5 @@ export enum KeyboardSet {
 	englishLower = 'English Alphabet (Lowercase)',
 	hiragana = 'Japanese Hiragana',
 	katakana = 'Japanese Katakana',
+	symbol = 'Symbols',
 }

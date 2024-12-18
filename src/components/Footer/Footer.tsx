@@ -1,9 +1,9 @@
 const Footer = () => {
 	return (
-		<footer className='h-[64px] container-center w-full pb-6 text-midnight-600 uppercase'>
+		<footer className='h-[64px] container-center w-full pb-6 text-midnight-600'>
 			<small>
 				Message <span className='text-midnight-400'>@betabetabeta</span> on
-				Discord for any issues
+				Discord for any issues!
 			</small>
 		</footer>
 	);
