@@ -3,7 +3,7 @@ import useTagStore from '../store/tagStore';
 import { choice } from '../utils/utils';
 import CopyButton from './Button/CopyButton';
 import CodeDisplay from './CodeDisplay/CodeDisplay';
-import { presetTags } from './constants/tags';
+import tags from '../data/tags.json';
 import Header from './Header/Header';
 import Keyboard from './Keyboard/Keyboard';
 import AlphabetButton from './Menu/AlphabetButton/AlphabetButton';
@@ -56,7 +56,9 @@ const App = () => {
 						</div>
 						<ClearButton />
 						<button
-							onClick={() => updateTag(choice(presetTags))}
+							onClick={() =>
+								updateTag(choice(tags.filter((elem) => elem.length <= 4)))
+							}
 							className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'
 						>
 							Random
