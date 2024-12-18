@@ -9,7 +9,7 @@ const CodeDisplay = () => {
 			<div className='container-center bg-menu-blue border-4 border-menu-blue-dark rounded-2xl h-20 w-[448px] pb-2'>
 				<input
 					type='text'
-					className='bg-transparent text-black placeholder:text-midnight-700/80 w-full h-full text-center text-6xl font-bold tracking-[0.5em] outline-none'
+					className='bg-transparent text-black placeholder:text-black/30 w-full h-full text-center text-6xl font-bold tracking-[0.5em] outline-none'
 					maxLength={4}
 					placeholder='TAG!'
 					value={tag}

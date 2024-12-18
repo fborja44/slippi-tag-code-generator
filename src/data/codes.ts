@@ -282,6 +282,7 @@ export const Symbol: CodeSet = {
 	'*': '8196',
 	'＠': '8197',
 	'@': '8197',
+	' ': '0000',
 };
 
 const codeSet: CodeSet = {

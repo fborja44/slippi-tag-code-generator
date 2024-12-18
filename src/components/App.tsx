@@ -1,13 +1,18 @@
+import useTagStore from '../store/tagStore';
+import { choice } from '../utils/utils';
+import CopyButton from './Button/CopyButton';
 import CodeDisplay from './CodeDisplay/CodeDisplay';
+import { presetTags } from './constants/tags';
 import Header from './Header/Header';
 import Keyboard from './Keyboard/Keyboard';
 import AlphabetButton from './Menu/AlphabetButton/AlphabetButton';
 import ClearButton from './Menu/ClearButton/ClearButton';
 import MenuButton from './Menu/MenuButton/MenuButton';
-import { IoCopy } from 'react-icons/io5';
 import { MdBackspace } from 'react-icons/md';
 
 const App = () => {
+	const { updateTag, backspace } = useTagStore((state) => state);
+
 	return (
 		<>
 			<Header />
@@ -15,12 +20,14 @@ const App = () => {
 				<section className='container-col gap-3'>
 					<CodeDisplay />
 					<Keyboard />
-					<MenuButton icon={<IoCopy className='h-10 w-10' />}>
-						Copy Code
-					</MenuButton>
+					<CopyButton />
 				</section>
 				<section className='container-col items-end gap-4 self-end'>
-					<MenuButton icon={<MdBackspace />} keyboardKey='Backspace' />
+					<MenuButton
+						icon={<MdBackspace />}
+						keyboardKey='Backspace'
+						onClick={backspace}
+					/>
 					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
 						<div className='flex flex-col gap-1 w-fit'>
 							<AlphabetButton character='あ' />
@@ -31,7 +38,10 @@ const App = () => {
 							</div>
 						</div>
 						<ClearButton />
-						<button className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'>
+						<button
+							onClick={() => updateTag(choice(presetTags))}
+							className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'
+						>
 							Random
 						</button>
 					</div>
