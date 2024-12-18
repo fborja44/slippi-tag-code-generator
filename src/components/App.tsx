@@ -2,7 +2,7 @@ import { KeyboardSet } from '../types/types';
 import useTagStore from '../store/tagStore';
 import { choice } from '../utils/utils';
 import CopyButton from './Button/CopyButton';
-import CodeDisplay from './CodeDisplay/CodeDisplay';
+import TagDisplay from './TagDisplay/TagDisplay';
 import tags from '../data/tags.json';
 import Header from './Header/Header';
 import Keyboard from './Keyboard/Keyboard';
@@ -10,6 +10,7 @@ import AlphabetButton from './Menu/AlphabetButton/AlphabetButton';
 import ClearButton from './Menu/ClearButton/ClearButton';
 import MenuButton from './Menu/MenuButton/MenuButton';
 import { MdBackspace } from 'react-icons/md';
+import Footer from './Footer/Footer';
 
 const App = () => {
 	const { updateTag, backspace, setKeyboard } = useTagStore((state) => state);
@@ -19,7 +20,7 @@ const App = () => {
 			<Header />
 			<main className='container-row justify-center gap-3 h-full py-10 mx-auto'>
 				<section className='container-col gap-3'>
-					<CodeDisplay />
+					<TagDisplay />
 					<Keyboard />
 					<CopyButton />
 				</section>
@@ -66,18 +67,7 @@ const App = () => {
 					</div>
 				</section>
 			</main>
-			<footer className='h-[64px] container-center w-full pb-6 text-midnight-400 uppercase'>
-				<small>
-					Created by{' '}
-					<a
-						href='https://github.com/fborja44'
-						target='_blank'
-						className='text-midnight-300 hover:text-midnight-200 transition-colors'
-					>
-						beta
-					</a>
-				</small>
-			</footer>
+			<Footer />
 		</>
 	);
 };
