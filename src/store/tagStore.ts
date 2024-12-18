@@ -1,19 +1,23 @@
 import { create } from 'zustand';
 import { charSet } from '../data/codes';
-import { AlphaKeyboard } from '../data/keyboards';
+import { KeyboardSet } from '../types/types';
 
 export interface TagState {
 	tag: string;
-	keyboard: string[];
+	keyboard: KeyboardSet;
+	keysPressed: Set<string>;
 	updateTag: (newTag: string) => void;
 	addCharacter: (character: string) => void;
 	backspace: () => void;
-	setKeyboard: (keyboard: string[]) => void;
+	setKeyboard: (keyboard: KeyboardSet) => void;
+	addKeyPressed: (key: string) => void;
+	removeKeyPressed: (key: string) => void;
 }
 
 const useTagStore = create<TagState>()((set) => ({
 	tag: '',
-	keyboard: AlphaKeyboard,
+	keyboard: KeyboardSet.englishLower,
+	keysPressed: new Set(),
 	updateTag: (newTag) => set(() => ({ tag: newTag })),
 	addCharacter: (character) =>
 		set(({ tag }) => {
@@ -31,6 +35,16 @@ const useTagStore = create<TagState>()((set) => ({
 			return {};
 		}),
 	setKeyboard: (keyboard) => set(() => ({ keyboard })),
+	addKeyPressed: (key) =>
+		set(({ keysPressed }) => ({
+			keysPressed: new Set(keysPressed).add(key),
+		})),
+	removeKeyPressed: (key) =>
+		set(({ keysPressed }) => {
+			const newKeysPressed = new Set(keysPressed);
+			newKeysPressed.delete(key);
+			return { keysPressed: newKeysPressed };
+		}),
 }));
 
 export default useTagStore;

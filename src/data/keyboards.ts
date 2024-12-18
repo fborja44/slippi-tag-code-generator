@@ -1,4 +1,4 @@
-export const AlphaKeyboard = [
+export const EnglishUpperKeyboard = [
 	// Row 1
 	'A',
 	'B',
@@ -55,6 +55,10 @@ export const AlphaKeyboard = [
 	'$',
 	'.',
 ];
+
+export const EnglishLowerKeyboard = EnglishUpperKeyboard.map((char) =>
+	char.toLowerCase()
+);
 
 export const HiraganaKeyboard = [
 	// Row 1

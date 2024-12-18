@@ -34,3 +34,7 @@ body {
 .container-center {
 	@apply flex flex-row items-center justify-center;
 }
+
+button {
+	outline: none;
+}

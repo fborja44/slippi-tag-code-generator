@@ -24,7 +24,7 @@ const Key = ({ character }: KeyProps) => {
 	return (
 		<button
 			onClick={handleClick}
-			className={`w-[70px] h-[90px] rounded-xl text-5xl flex flex-col justify-end px-1 py-1.5 border-4 ${
+			className={`w-[70px] h-[90px] rounded-xl text-5xl flex flex-col justify-end px-0.5 py-1.5 border-4 ${
 				!isPressed
 					? 'bg-menu-bg text-menu-gold-light'
 					: 'bg-menu-yellow text-black'

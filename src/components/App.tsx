@@ -1,8 +1,4 @@
-import {
-	AlphaKeyboard,
-	HiraganaKeyboard,
-	KatakanaKeyboard,
-} from '../data/keyboards';
+import { KeyboardSet } from '../types/types';
 import useTagStore from '../store/tagStore';
 import { choice } from '../utils/utils';
 import CopyButton from './Button/CopyButton';
@@ -36,23 +32,25 @@ const App = () => {
 					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
 						<div className='flex flex-col gap-1 w-fit'>
 							<AlphabetButton
+								keyboardSet={KeyboardSet.hiragana}
 								character='あ'
-								onClick={() => setKeyboard(HiraganaKeyboard)}
+								onClick={() => setKeyboard(KeyboardSet.hiragana)}
 							/>
 							<AlphabetButton
+								keyboardSet={KeyboardSet.katakana}
 								character='ア'
-								onClick={() => setKeyboard(KatakanaKeyboard)}
+								onClick={() => setKeyboard(KeyboardSet.katakana)}
 							/>
 							<div className='container-row gap-1'>
 								<AlphabetButton
+									keyboardSet={KeyboardSet.englishUpper}
 									character='A'
-									onClick={() => setKeyboard(AlphaKeyboard)}
+									onClick={() => setKeyboard(KeyboardSet.englishUpper)}
 								/>
 								<AlphabetButton
+									keyboardSet={KeyboardSet.englishLower}
 									character='a'
-									onClick={() =>
-										setKeyboard(AlphaKeyboard.map((char) => char.toLowerCase()))
-									}
+									onClick={() => setKeyboard(KeyboardSet.englishLower)}
 								/>
 							</div>
 						</div>
