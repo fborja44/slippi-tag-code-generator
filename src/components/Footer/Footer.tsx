@@ -1,15 +1,9 @@
 const Footer = () => {
 	return (
-		<footer className='h-[64px] container-center w-full pb-6 text-midnight-400 uppercase'>
+		<footer className='h-[64px] container-center w-full pb-6 text-midnight-600 uppercase'>
 			<small>
-				Created by{' '}
-				<a
-					href='https://github.com/fborja44'
-					target='_blank'
-					className='text-midnight-300 hover:text-midnight-200 transition-colors'
-				>
-					beta
-				</a>
+				Message <span className='text-midnight-400'>@betabetabeta</span> on
+				Discord for any issues
 			</small>
 		</footer>
 	);

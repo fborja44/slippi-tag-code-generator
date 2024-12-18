@@ -1,4 +1,4 @@
-export const EnglishUpperKeyboard = [
+export const EnglishUpperKeyboard: string[] = [
 	// Row 1
 	'A',
 	'B',
@@ -56,11 +56,11 @@ export const EnglishUpperKeyboard = [
 	'.',
 ];
 
-export const EnglishLowerKeyboard = EnglishUpperKeyboard.map((char) =>
+export const EnglishLowerKeyboard: string[] = EnglishUpperKeyboard.map((char) =>
 	char.toLowerCase()
 );
 
-export const HiraganaKeyboard = [
+export const HiraganaKeyboard: string[] = [
 	// Row 1
 	'わ',
 	'ら',
@@ -118,7 +118,7 @@ export const HiraganaKeyboard = [
 	'お',
 ];
 
-export const KatakanaKeyboard = [
+export const KatakanaKeyboard: string[] = [
 	// Row 1
 	'ワ',
 	'ラ',

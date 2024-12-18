@@ -39,7 +39,7 @@ const Keyboard = () => {
 
 	return (
 		<div className='grid grid-cols-10 w-fit gap-2.5 flex-wrap'>
-			{keyboardSet.map((character, i) => (
+			{Array.from(keyboardSet).map((character, i) => (
 				<Key character={character} key={`key-${character}-${i}`} />
 			))}
 		</div>

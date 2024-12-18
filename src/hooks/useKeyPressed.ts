@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import useTagStore from '../store/tagStore';
 import { KeyboardSet } from '../types/types';
+import {
+	EnglishLowerKeyboard,
+	HiraganaKeyboard,
+	KatakanaKeyboard,
+} from '../data/keyboards';
 
 const useKeyPressed = (key: string) => {
 	const [isPressed, setIsPressed] = useState(false);
@@ -12,6 +17,31 @@ const useKeyPressed = (key: string) => {
 		// Key Down Handler
 		const handleKeyDown = (e: KeyboardEvent) => {
 			e.preventDefault();
+
+			// Change Keyboards automatically
+			if (
+				keyboard !== KeyboardSet.englishLower &&
+				keyboard !== KeyboardSet.englishUpper
+			) {
+				if (EnglishLowerKeyboard.includes(e.key.toLocaleLowerCase())) {
+					setKeyboard(KeyboardSet.englishLower);
+					addCharacter(e.key);
+				}
+			}
+			if (keyboard !== KeyboardSet.hiragana) {
+				if (HiraganaKeyboard.includes(e.key.toLocaleLowerCase())) {
+					setKeyboard(KeyboardSet.hiragana);
+					addCharacter(e.key);
+				}
+			}
+			if (keyboard !== KeyboardSet.katakana) {
+				if (KatakanaKeyboard.includes(e.key.toLocaleLowerCase())) {
+					setKeyboard(KeyboardSet.katakana);
+					addCharacter(e.key);
+				}
+			}
+
+			// Detect valid keypresses
 			if (
 				e.key === key ||
 				e.key.toLowerCase() === key ||
