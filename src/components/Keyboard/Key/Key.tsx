@@ -1,37 +1,11 @@
-import { useEffect, useState } from 'react';
+import useKeyPressed from '../../../hooks/useKeyPressed';
 
 interface KeyProps {
 	character: string;
 }
 
 const Key = ({ character }: KeyProps) => {
-	const [isPressed, setIsPressed] = useState(false);
-
-	useEffect(() => {
-		// Key Down Handler
-		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.key === character.toLowerCase()) {
-				setIsPressed(true);
-			}
-		};
-
-		// Key Up Handler
-		const handleKeyUp = (e: KeyboardEvent) => {
-			if (e.key === character.toLowerCase()) {
-				setIsPressed(false);
-			}
-		};
-
-		if (character !== ' ') {
-			window.addEventListener('keydown', handleKeyDown);
-			window.addEventListener('keyup', handleKeyUp);
-		}
-
-		return () => {
-			window.removeEventListener('keydown', handleKeyDown);
-			window.removeEventListener('keyup', handleKeyUp);
-		};
-	}, [character]);
+	const isPressed = useKeyPressed(character);
 
 	if (character.length !== 1) return null;
 

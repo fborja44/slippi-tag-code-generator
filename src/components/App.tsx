@@ -20,21 +20,24 @@ const App = () => {
 					</MenuButton>
 				</section>
 				<section className='container-col items-end gap-4 self-end'>
-					<MenuButton icon={<MdBackspace />} />
+					<MenuButton icon={<MdBackspace />} keyboardKey='Backspace' />
 					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
-						<div className='container-col gap-1 w-fit'>
+						<div className='flex flex-col gap-1 w-fit'>
 							<AlphabetButton character='あ' />
 							<AlphabetButton character='ア' />
-							<AlphabetButton character='A' />
+							<div className='container-row gap-1'>
+								<AlphabetButton character='A' />
+								<AlphabetButton character='a' />
+							</div>
 						</div>
 						<ClearButton />
-						<button className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black'>
+						<button className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'>
 							Random
 						</button>
 					</div>
 				</section>
 			</main>
-			<footer className='h-[64px] container-center w-full pb-6 text-midnight-400'>
+			<footer className='h-[64px] container-center w-full pb-6 text-midnight-400 uppercase'>
 				<small>
 					Created by{' '}
 					<a
