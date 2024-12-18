@@ -1,10 +1,12 @@
 import Key from './Key/Key';
-import { Alpha } from '../../data/keyboards';
+import useTagStore from '../../store/tagStore';
 
 const Keyboard = () => {
+	const { keyboard } = useTagStore((state) => state);
+
 	return (
 		<div className='grid grid-cols-10 w-fit gap-2.5 flex-wrap'>
-			{Alpha.map((character, i) => (
+			{keyboard.map((character, i) => (
 				<Key character={character} key={`key-${character}-${i}`} />
 			))}
 		</div>

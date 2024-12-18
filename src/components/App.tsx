@@ -1,3 +1,8 @@
+import {
+	AlphaKeyboard,
+	HiraganaKeyboard,
+	KatakanaKeyboard,
+} from '../data/keyboards';
 import useTagStore from '../store/tagStore';
 import { choice } from '../utils/utils';
 import CopyButton from './Button/CopyButton';
@@ -11,7 +16,7 @@ import MenuButton from './Menu/MenuButton/MenuButton';
 import { MdBackspace } from 'react-icons/md';
 
 const App = () => {
-	const { updateTag, backspace } = useTagStore((state) => state);
+	const { updateTag, backspace, setKeyboard } = useTagStore((state) => state);
 
 	return (
 		<>
@@ -30,11 +35,25 @@ const App = () => {
 					/>
 					<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
 						<div className='flex flex-col gap-1 w-fit'>
-							<AlphabetButton character='あ' />
-							<AlphabetButton character='ア' />
+							<AlphabetButton
+								character='あ'
+								onClick={() => setKeyboard(HiraganaKeyboard)}
+							/>
+							<AlphabetButton
+								character='ア'
+								onClick={() => setKeyboard(KatakanaKeyboard)}
+							/>
 							<div className='container-row gap-1'>
-								<AlphabetButton character='A' />
-								<AlphabetButton character='a' />
+								<AlphabetButton
+									character='A'
+									onClick={() => setKeyboard(AlphaKeyboard)}
+								/>
+								<AlphabetButton
+									character='a'
+									onClick={() =>
+										setKeyboard(AlphaKeyboard.map((char) => char.toLowerCase()))
+									}
+								/>
 							</div>
 						</div>
 						<ClearButton />

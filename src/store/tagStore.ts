@@ -1,15 +1,19 @@
 import { create } from 'zustand';
 import { charSet } from '../data/codes';
+import { AlphaKeyboard } from '../data/keyboards';
 
 export interface TagState {
 	tag: string;
+	keyboard: string[];
 	updateTag: (newTag: string) => void;
 	addCharacter: (character: string) => void;
 	backspace: () => void;
+	setKeyboard: (keyboard: string[]) => void;
 }
 
 const useTagStore = create<TagState>()((set) => ({
-	tag: 'NEO!',
+	tag: '',
+	keyboard: AlphaKeyboard,
 	updateTag: (newTag) => set(() => ({ tag: newTag })),
 	addCharacter: (character) =>
 		set(({ tag }) => {
@@ -26,6 +30,7 @@ const useTagStore = create<TagState>()((set) => ({
 			}
 			return {};
 		}),
+	setKeyboard: (keyboard) => set(() => ({ keyboard })),
 }));
 
 export default useTagStore;

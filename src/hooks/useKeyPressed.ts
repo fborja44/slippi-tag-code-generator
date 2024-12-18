@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import useTagStore from '../store/tagStore';
 
 const useKeyPressed = (key: string) => {
-	if (key.length === 1) key = key.toLowerCase();
-
 	const [isPressed, setIsPressed] = useState(false);
 	const { addCharacter, backspace } = useTagStore((state) => state);
 
