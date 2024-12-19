@@ -1,6 +1,7 @@
 import { GiGecko } from 'react-icons/gi';
 import Button from '../Button/Button';
 import { VscGithub } from 'react-icons/vsc';
+import HelpPopup from '../Popup/HelpPopup';
 
 const Header = () => {
 	return (
@@ -10,7 +11,7 @@ const Header = () => {
 				<h1 className='text-xl font-bold'>melee tag code generator</h1>
 			</div>
 			<nav className='container-row gap-2'>
-				<Button>How To Use</Button>
+				<HelpPopup />
 				<a href='https://slippi.gg/' target='_blank'>
 					<Button>Gecko Code By Fizzi</Button>
 				</a>
