@@ -17,6 +17,7 @@ const CodePopup = () => {
 				onClick={open}
 				icon={<FaMagnifyingGlass className='w-9 h-9' />}
 				className='px-6'
+				audioPath='/audio/select.wav'
 			/>
 			<Popup
 				isOpen={isOpen}

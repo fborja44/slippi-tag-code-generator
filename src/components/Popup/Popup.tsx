@@ -27,7 +27,7 @@ const Popup = ({
 			<div className='fixed inset-0 z-10 w-screen overflow-y-auto bg-black/30 backdrop-blur-md duration-300'>
 				<div className='flex min-h-full items-center justify-center p-4'>
 					<DialogPanel
-						transition
+						// transition
 						className='flex flex-col gap-4 max-w-2xl rounded-3xl bg-midnight-950 border-4 border-b-[10px] border-midnight-600 px-7 py-5 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0'
 					>
 						{(title || icon) && (

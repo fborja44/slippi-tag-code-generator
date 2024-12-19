@@ -27,7 +27,7 @@ const CopyButton = () => {
 			<button
 				className={`${createMenuButtonClass(false)} flex-grow`}
 				disabled={!code}
-				onClick={playAudio}
+				onClick={() => playAudio()}
 			>
 				<span>{copied ? 'Copied!' : 'Copy Code'}</span>
 				<IoCopy className='h-10 w-10' />
