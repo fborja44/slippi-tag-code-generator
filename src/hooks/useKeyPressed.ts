@@ -7,12 +7,12 @@ import {
 	KatakanaKeyboard,
 	SymbolKeyboard,
 } from '../data/keyboards';
+import useControls from './useControls';
 
 const useKeyPressed = (key: string) => {
 	const [isPressed, setIsPressed] = useState(false);
-	const { addCharacter, backspace, keyboard, setKeyboard } = useTagStore(
-		(state) => state
-	);
+	const { type, backspace } = useControls();
+	const { keyboard, setKeyboard } = useTagStore((state) => state);
 
 	useEffect(() => {
 		// Key Down Handler
@@ -26,7 +26,7 @@ const useKeyPressed = (key: string) => {
 					SymbolKeyboard.includes(e.key.toLocaleLowerCase())
 				) {
 					setKeyboard(KeyboardSet.symbol);
-					addCharacter(e.key);
+					type(e.key);
 				}
 			}
 			if (
@@ -35,19 +35,19 @@ const useKeyPressed = (key: string) => {
 			) {
 				if (EnglishLowerKeyboard.includes(e.key.toLocaleLowerCase())) {
 					setKeyboard(KeyboardSet.englishLower);
-					addCharacter(e.key);
+					type(e.key);
 				}
 			}
 			if (keyboard !== KeyboardSet.hiragana) {
 				if (HiraganaKeyboard.includes(e.key.toLocaleLowerCase())) {
 					setKeyboard(KeyboardSet.hiragana);
-					addCharacter(e.key);
+					type(e.key);
 				}
 			}
 			if (keyboard !== KeyboardSet.katakana) {
 				if (KatakanaKeyboard.includes(e.key.toLocaleLowerCase())) {
 					setKeyboard(KeyboardSet.katakana);
-					addCharacter(e.key);
+					type(e.key);
 				}
 			}
 
@@ -67,7 +67,7 @@ const useKeyPressed = (key: string) => {
 								? e.key.toLowerCase()
 								: e.key.toUpperCase()
 							: e.key; // Default Behavior
-					addCharacter(character);
+					type(character);
 				} else if (e.key === 'Backspace') {
 					backspace();
 				}
@@ -96,7 +96,7 @@ const useKeyPressed = (key: string) => {
 			window.removeEventListener('keydown', handleKeyDown);
 			window.removeEventListener('keyup', handleKeyUp);
 		};
-	}, [addCharacter, backspace, key, keyboard, setKeyboard]);
+	}, [type, backspace, key, keyboard, setKeyboard]);
 
 	return isPressed;
 };

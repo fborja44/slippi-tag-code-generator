@@ -1,6 +1,5 @@
-import { charSet } from '../../../data/codes';
 import useKeyPressed from '../../../hooks/useKeyPressed';
-import useTagStore from '../../../store/tagStore';
+import useControls from '../../../hooks/useControls';
 
 interface KeyProps {
 	character: string;
@@ -8,22 +7,14 @@ interface KeyProps {
 
 const Key = ({ character }: KeyProps) => {
 	const isPressed = useKeyPressed(character);
-	const { tag, updateTag } = useTagStore((state) => state);
+	const { type } = useControls();
 
 	if (character.length !== 1) return null;
 
-	/**
-	 * Adds the character to the entered tag if it exists in the character set
-	 */
-	const handleClick = () => {
-		if (charSet.has(character) && tag.length < 4) {
-			updateTag(tag + character);
-		}
-	};
-
 	return (
 		<button
-			onClick={handleClick}
+			// onMouseEnter={move}
+			onClick={() => type(character)}
 			className={`w-[70px] h-[90px] rounded-xl text-5xl flex flex-col justify-end px-0.5 py-1.5 border-4 ${
 				!isPressed
 					? 'bg-menu-bg text-menu-gold-light'

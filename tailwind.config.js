@@ -39,7 +39,7 @@ export default {
 					stone: '#776A5E',
 					'stone-text': '#BEB1A4',
 					gray: '#939299',
-					bg: 'rgba(0,0,0, 0.3)',
+					bg: 'rgba(0,0,0, 0.35)',
 				},
 			},
 			fontFamily: {

@@ -8,7 +8,7 @@ export interface TagState {
 	keysPressed: Set<string>;
 	updateTag: (newTag: string) => void;
 	addCharacter: (character: string) => void;
-	backspace: () => void;
+	removeCharacter: () => void;
 	setKeyboard: (keyboard: KeyboardSet) => void;
 	addKeyPressed: (key: string) => void;
 	removeKeyPressed: (key: string) => void;
@@ -27,7 +27,7 @@ const useTagStore = create<TagState>()((set) => ({
 			}
 			return {};
 		}),
-	backspace: () =>
+	removeCharacter: () =>
 		set(({ tag }) => {
 			if (tag.length > 0) {
 				return { tag: tag.slice(0, -1) };

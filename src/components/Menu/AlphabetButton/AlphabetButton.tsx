@@ -1,6 +1,8 @@
 import { ButtonHTMLAttributes } from 'react';
 import { KeyboardSet } from '../../../types/types';
 import useTagStore from '../../../store/tagStore';
+import useAudio from '../../../hooks/useAudio';
+// import useControls from '../../../hooks/useControls';
 
 interface AlphabetButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 	character: string;
@@ -13,12 +15,23 @@ const AlphabetButton = ({
 	keyboardSet,
 }: AlphabetButton) => {
 	const { keyboard } = useTagStore((state) => state);
+	const { playAudio: playSelect } = useAudio('/audio/select.wav');
+	const { playAudio: playError } = useAudio('/audio/error.wav');
+	// const { move } = useControls();
 
 	const selected = keyboard === keyboardSet;
 
 	return (
 		<button
-			onClick={onClick}
+			// onMouseEnter={move}
+			onClick={(e) => {
+				if (onClick) {
+					playSelect();
+					onClick(e);
+				} else {
+					playError();
+				}
+			}}
 			className={`relative ${
 				selected
 					? 'bg-menu-neutral-light text-black'

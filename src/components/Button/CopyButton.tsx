@@ -4,10 +4,12 @@ import { generateCode } from '../../utils/utils';
 import useTagStore, { TagState } from '../../store/tagStore';
 import { IoCopy } from 'react-icons/io5';
 import { createMenuButtonClass } from '../Menu/MenuButton/style';
+import useAudio from '../../hooks/useAudio';
 
 const CopyButton = () => {
 	const { tag } = useTagStore((state: TagState) => state);
 	const [copied, setCopied] = useState(false);
+	const { playAudio } = useAudio('/audio/select.wav');
 
 	useEffect(() => {
 		let interval = 0;
@@ -25,6 +27,7 @@ const CopyButton = () => {
 			<button
 				className={`${createMenuButtonClass(false)} flex-grow`}
 				disabled={!code}
+				onClick={playAudio}
 			>
 				<span>{copied ? 'Copied!' : 'Copy Code'}</span>
 				<IoCopy className='h-10 w-10' />

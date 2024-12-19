@@ -6,9 +6,11 @@ import AlphabetButton from '../Menu/AlphabetButton/AlphabetButton';
 import ClearButton from '../Menu/ClearButton/ClearButton';
 import MenuButton from '../Menu/MenuButton/MenuButton';
 import { MdBackspace } from 'react-icons/md';
+import useControls from '../../hooks/useControls';
 
 const Sidebar = () => {
-	const { updateTag, backspace, setKeyboard } = useTagStore((state) => state);
+	const { setKeyboard } = useTagStore((state) => state);
+	const { backspace, fill } = useControls();
 
 	return (
 		<section className='container-col items-end gap-4 self-end'>
@@ -52,9 +54,7 @@ const Sidebar = () => {
 				</div>
 				<ClearButton />
 				<button
-					onClick={() =>
-						updateTag(choice(tags.filter((elem) => elem.length <= 4)))
-					}
+					onClick={() => fill(choice(tags.filter((elem) => elem.length <= 4)))}
 					className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'
 				>
 					Random
