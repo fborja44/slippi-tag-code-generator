@@ -23,9 +23,15 @@ const useTagStore = create<TagState>()((set) => ({
 	updateTag: (newTag) => set(() => ({ tag: newTag })),
 	addCharacter: (character) =>
 		set(({ tag }) => {
-			const newTag = tag + character;
-			if (charSet.has(character) && newTag.length <= 4) {
-				return { tag: newTag };
+			// Filter invalid characters
+			if (!charSet.has(character)) return {};
+
+			if (tag.length < 4) {
+				// Append character
+				return { tag: tag + character };
+			} else if (tag.length === 4) {
+				// Replace last character
+				return { tag: tag.slice(0, 3) + character };
 			}
 			return {};
 		}),

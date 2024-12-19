@@ -3,7 +3,7 @@ import useTagStore from '../store/tagStore';
 import useAudio from './useAudio';
 
 const useControls = () => {
-	const { tag, updateTag, addCharacter, removeCharacter } = useTagStore(
+	const { updateTag, addCharacter, removeCharacter } = useTagStore(
 		(state) => state
 	);
 	const { playAudio: playSelect } = useAudio('/audio/select.wav');
@@ -12,7 +12,7 @@ const useControls = () => {
 
 	const type = (character: string) => {
 		if (character.length > 1) return;
-		if (charSet.has(character) && tag.length < 4) {
+		if (charSet.has(character)) {
 			addCharacter(character);
 			playSelect();
 		}
