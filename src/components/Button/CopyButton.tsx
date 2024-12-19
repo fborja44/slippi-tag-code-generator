@@ -22,7 +22,10 @@ const CopyButton = () => {
 	const code = generateCode(tag);
 	return (
 		<CopyToClipboard onCopy={() => setCopied(true)} text={code ?? ''}>
-			<button className={createMenuButtonClass(false)} disabled={!code}>
+			<button
+				className={`${createMenuButtonClass(false)} flex-grow`}
+				disabled={!code}
+			>
 				<span>{copied ? 'Copied!' : 'Copy Code'}</span>
 				<IoCopy className='h-10 w-10' />
 			</button>

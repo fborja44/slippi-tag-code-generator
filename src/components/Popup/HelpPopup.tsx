@@ -14,10 +14,10 @@ const HelpPopup = () => {
 				isOpen={isOpen}
 				onClose={close}
 				title={'How To Use'}
-				icon={<HiQuestionMarkCircle className='relative top-0.5 w-10 h-10' />}
+				icon={<HiQuestionMarkCircle className='w-10 h-10' />}
 				actions={<PopupButton onClick={close}>Got It!</PopupButton>}
 			>
-				<ol className='flex flex-col gap-2 list-decimal ml-6'>
+				<ol className='flex flex-col gap-2 list-decimal ml-6 px-5 py-4'>
 					<li>
 						Enter your desired tag in the field below. You can use either your
 						keyboard, or press the keys on the screen.
@@ -37,6 +37,9 @@ const HelpPopup = () => {
 						Open the <Highlight>Add</Highlight> tab and paste your code and
 						click the <Highlight>Add Button</Highlight>
 					</li>
+					<li>
+						<Highlight>You're ready to go!</Highlight>
+					</li>
 				</ol>
 			</Popup>
 		</>
@@ -50,5 +53,5 @@ interface HighlightProps {
 }
 
 const Highlight = ({ children }: HighlightProps) => {
-	return <span className='text-menu-blue-dark'>{children}</span>;
+	return <span className='text-menu-gold'>{children}</span>;
 };

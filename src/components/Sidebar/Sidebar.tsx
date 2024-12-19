@@ -16,6 +16,7 @@ const Sidebar = () => {
 				icon={<MdBackspace />}
 				keyboardKey='Backspace'
 				onClick={backspace}
+				className='w-full'
 			/>
 			<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
 				<div className='flex flex-col gap-1 w-fit'>

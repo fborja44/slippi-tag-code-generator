@@ -4,6 +4,7 @@ import Header from './Header/Header';
 import Keyboard from './Keyboard/Keyboard';
 import Footer from './Footer/Footer';
 import Sidebar from './Sidebar/Sidebar';
+import CodePopup from './Popup/CodePopup';
 
 const App = () => {
 	return (
@@ -13,7 +14,10 @@ const App = () => {
 				<section className='container-col gap-3'>
 					<TagDisplay />
 					<Keyboard />
-					<CopyButton />
+					<div className='w-full container-row gap-3'>
+						<CopyButton />
+						<CodePopup />
+					</div>
 				</section>
 				<Sidebar />
 			</main>

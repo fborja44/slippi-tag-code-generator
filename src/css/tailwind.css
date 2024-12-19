@@ -8,6 +8,12 @@
 	@apply bg-midnight-950 text-midnight-300 font-melee;
 }
 
+/* Scrollbar Styles */
+.scrollbar-hide::-webkit-scrollbar {
+	/* Customize the scrollbar width */
+	@apply w-0;
+}
+
 html {
 	background-image: url(../assets/grid.svg);
 	object-fit: cover;

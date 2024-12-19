@@ -28,20 +28,20 @@ const Popup = ({
 				<div className='flex min-h-full items-center justify-center p-4'>
 					<DialogPanel
 						transition
-						className='flex flex-col gap-4 max-w-2xl rounded-xl bg-midnight-950 border-4 border-b-[10px] border-midnight-600 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0'
+						className='flex flex-col gap-4 max-w-2xl rounded-3xl bg-midnight-950 border-4 border-b-[10px] border-midnight-600 px-7 py-5 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0'
 					>
-						{title && (
+						{(title || icon) && (
 							<DialogTitle
 								as='h2'
-								className='container-row gap-2.5 text-3xl text-menu-yellow'
+								className='container-row gap-2 text-3xl text-menu-yellow'
 							>
-								{icon}
-								<span>{title}</span>
+								{icon && <span className='relative top-0.5'>{icon}</span>}
+								{title && <span>{title}</span>}
 							</DialogTitle>
 						)}
-						<div className='w-fit'>{children}</div>
+						<div className='w-fit bg-black/50 rounded-2xl'>{children}</div>
 						{actions && (
-							<div className='container-row justify-center mt-2 w-full'>
+							<div className='container-row justify-center mt-1 w-full'>
 								{actions}
 							</div>
 						)}

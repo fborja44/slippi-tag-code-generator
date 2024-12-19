@@ -5,6 +5,7 @@ import { createMenuButtonClass } from './style';
 interface MenuButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	icon?: React.ReactNode;
 	keyboardKey?: string;
+	className?: string;
 }
 
 const MenuButton = ({
@@ -13,13 +14,14 @@ const MenuButton = ({
 	disabled,
 	keyboardKey = '',
 	onClick,
+	className,
 }: MenuButtonProps) => {
 	const isPressed = useKeyPressed(keyboardKey);
 
 	return (
 		<button
 			disabled={disabled}
-			className={createMenuButtonClass(isPressed)}
+			className={`${className} ${createMenuButtonClass(isPressed)}`}
 			onClick={onClick}
 		>
 			{children && <span>{children}</span>}
