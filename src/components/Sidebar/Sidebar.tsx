@@ -3,10 +3,11 @@ import useTagStore from '../../store/tagStore';
 import { choice } from '../../utils/utils';
 import tags from '../../data/tags.json';
 import AlphabetButton from '../Menu/AlphabetButton/AlphabetButton';
-import ClearButton from '../Menu/ClearButton/ClearButton';
+import ClearButton from '../Menu/SidebarButton/ClearButton';
 import MenuButton from '../Menu/MenuButton/MenuButton';
 import { MdBackspace } from 'react-icons/md';
 import useControls from '../../hooks/useControls';
+import AudioButton from '../Menu/SidebarButton/AudioButton';
 
 const Sidebar = () => {
 	const { setKeyboard } = useTagStore((state) => state);
@@ -52,7 +53,10 @@ const Sidebar = () => {
 						onClick={() => setKeyboard(KeyboardSet.symbol)}
 					/>
 				</div>
-				<ClearButton />
+				<div className='container-row justify-between px-2'>
+					<ClearButton />
+					<AudioButton />
+				</div>
 				<button
 					onClick={() => fill(choice(tags.filter((elem) => elem.length <= 4)))}
 					className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'

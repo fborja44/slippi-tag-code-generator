@@ -12,6 +12,8 @@ export interface TagState {
 	setKeyboard: (keyboard: KeyboardSet) => void;
 	addKeyPressed: (key: string) => void;
 	removeKeyPressed: (key: string) => void;
+	muted: boolean;
+	setMuted: (muted: boolean) => void;
 }
 
 const useTagStore = create<TagState>()((set) => ({
@@ -45,6 +47,8 @@ const useTagStore = create<TagState>()((set) => ({
 			newKeysPressed.delete(key);
 			return { keysPressed: newKeysPressed };
 		}),
+	muted: false,
+	setMuted: (muted) => set(() => ({ muted })),
 }));
 
 export default useTagStore;
