@@ -15,7 +15,7 @@ const Key = ({ character }: KeyProps) => {
 		<button
 			// onMouseEnter={move}
 			onClick={() => type(character)}
-			className={`w-[70px] h-[90px] rounded-xl text-5xl flex flex-col justify-end px-0.5 py-1.5 border-4 ${
+			className={`w-[50px] h-[65px] text-[32px] leading-none rounded-lg md:w-[60px] md:h-[80px] md:text-[40px] lg:w-[70px] lg:h-[90px] lg:text-5xl lg:rounded-xl flex flex-col justify-end px-0.5 py-1.5 border-4 ${
 				!isPressed
 					? 'bg-menu-bg text-menu-gold-light'
 					: 'bg-menu-yellow text-black'

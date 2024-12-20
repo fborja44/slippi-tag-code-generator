@@ -1,29 +1,21 @@
 import { KeyboardSet } from '../../types/types';
 import useTagStore from '../../store/tagStore';
-import { choice } from '../../utils/utils';
-import tags from '../../data/tags.json';
 import AlphabetButton from '../Menu/AlphabetButton/AlphabetButton';
 import ClearButton from '../Menu/SidebarButton/ClearButton';
-import MenuButton from '../Menu/MenuButton/MenuButton';
-import { MdBackspace } from 'react-icons/md';
-import useControls from '../../hooks/useControls';
 import AudioButton from '../Menu/SidebarButton/AudioButton';
+import BackspaceButton from '../Menu/BackspaceButton/BackspaceButton';
+import RandomButton from '../Menu/RandomButton/RandomButton';
 
 const Sidebar = () => {
 	const { setKeyboard } = useTagStore((state) => state);
-	const { backspace, fill } = useControls();
-
 	return (
-		<section className='container-col items-end gap-4 self-end'>
-			<MenuButton
-				icon={<MdBackspace />}
-				keyboardKey='Backspace'
-				onClick={backspace}
-				className='w-full'
-			/>
-			<div className='w-full flex flex-col gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-10'>
-				<div className='flex flex-col gap-1 w-fit'>
-					<div className='container-row gap-1'>
+		<section className='container-col items-end gap-4 self-end w-full md:w-fit'>
+			<div className='hidden md:block w-full'>
+				<BackspaceButton />
+			</div>
+			<div className='w-full flex flex-col sm:flex-row justify-between md:flex-col gap-4 md:gap-8 bg-menu-bg border-4 border-white rounded-3xl px-4 py-4 md:py-10'>
+				<div className='flex flex-row md:flex-col self-center gap-1 w-fit'>
+					<ButtonGroup>
 						<AlphabetButton
 							keyboardSet={KeyboardSet.hiragana}
 							character='あ'
@@ -34,8 +26,8 @@ const Sidebar = () => {
 							character='ア'
 							onClick={() => setKeyboard(KeyboardSet.katakana)}
 						/>
-					</div>
-					<div className='container-row gap-1'>
+					</ButtonGroup>
+					<ButtonGroup>
 						<AlphabetButton
 							keyboardSet={KeyboardSet.englishUpper}
 							character='A'
@@ -46,26 +38,31 @@ const Sidebar = () => {
 							character='a'
 							onClick={() => setKeyboard(KeyboardSet.englishLower)}
 						/>
-					</div>
+					</ButtonGroup>
 					<AlphabetButton
 						keyboardSet={KeyboardSet.symbol}
 						character='@'
 						onClick={() => setKeyboard(KeyboardSet.symbol)}
 					/>
 				</div>
-				<div className='container-row justify-between px-2'>
-					<ClearButton />
-					<AudioButton />
+				<div className='flex flex-col justify-between gap-2 md:gap-8'>
+					<div className='container-row gap-2 justify-between px-12 sm:px-0.5 lg:px-2'>
+						<ClearButton />
+						<AudioButton />
+					</div>
+					<RandomButton />
 				</div>
-				<button
-					onClick={() => fill(choice(tags.filter((elem) => elem.length <= 4)))}
-					className='bg-black border-4 border-menu-stone text-menu-stone rounded-xl uppercase font-serif text-5xl hover:bg-menu-yellow hover:text-black active:bg-menu-gold'
-				>
-					Random
-				</button>
 			</div>
 		</section>
 	);
 };
 
 export default Sidebar;
+
+interface ButtonGroupProps {
+	children?: React.ReactNode;
+}
+
+const ButtonGroup = ({ children }: ButtonGroupProps) => {
+	return <div className='flex flex-col md:flex-row gap-1'>{children}</div>;
+};

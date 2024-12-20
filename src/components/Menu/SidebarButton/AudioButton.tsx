@@ -16,9 +16,9 @@ const AudioButton = () => {
 			}}
 		>
 			{muted ? (
-				<FaVolumeMute className='w-14 h-14' />
+				<FaVolumeMute className='w-11 h-11 lg:w-14 lg:h-14' />
 			) : (
-				<FaVolumeHigh className='w-14 h-14' />
+				<FaVolumeHigh className='w-11 h-11 lg:w-14 lg:h-14' />
 			)}
 		</SidebarButton>
 	);

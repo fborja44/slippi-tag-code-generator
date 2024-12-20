@@ -7,7 +7,7 @@ const ClearButton = () => {
 
 	return (
 		<SidebarButton onClick={erase}>
-			<Clear />
+			<Clear className='w-12 h-12 lg:w-16 lg:h-16' />
 		</SidebarButton>
 	);
 };
