@@ -1,4 +1,7 @@
-import { HiQuestionMarkCircle } from 'react-icons/hi';
+import {
+	HiQuestionMarkCircle,
+	HiOutlineQuestionMarkCircle,
+} from 'react-icons/hi';
 import usePopup from '../../hooks/usePopup';
 import Button from '../Button/Button';
 import Popup from './Popup';
@@ -9,7 +12,13 @@ const HelpPopup = () => {
 
 	return (
 		<>
-			<Button onClick={open}>How To Use</Button>
+			<Button
+				onClick={open}
+				border
+				icon={<HiOutlineQuestionMarkCircle className='w-6 h-6' />}
+			>
+				How To Use
+			</Button>
 			<Popup
 				isOpen={isOpen}
 				onClose={close}

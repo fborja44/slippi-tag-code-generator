@@ -1,6 +1,5 @@
 import { GiGecko } from 'react-icons/gi';
 import Button from '../Button/Button';
-import { VscGithub } from 'react-icons/vsc';
 import HelpPopup from '../Popup/HelpPopup';
 
 const Header = () => {
@@ -13,9 +12,6 @@ const Header = () => {
 				</h1>
 			</div>
 			<nav className='container-row gap-4 lg:gap-8'>
-				<span>
-					<HelpPopup />
-				</span>
 				<a
 					href='https://slippi.gg/'
 					target='_blank'
@@ -23,14 +19,7 @@ const Header = () => {
 				>
 					<Button>Gecko Code By Fizzi</Button>
 				</a>
-				<a
-					href='https://github.com/fborja44/slippi-tag-code-generator'
-					target='_blank'
-				>
-					<Button border icon={<VscGithub className='h-5 w-5' />}>
-						GitHub
-					</Button>
-				</a>
+				<HelpPopup />
 			</nav>
 		</header>
 	);

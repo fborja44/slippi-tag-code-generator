@@ -4,7 +4,7 @@ import AlphabetButton from '../Menu/Buttons/AlphabetButton';
 import ClearButton from '../Menu/SidebarButton/ClearButton';
 import AudioButton from '../Menu/SidebarButton/AudioButton';
 import BackspaceButton from '../Menu/Buttons/BackspaceButton';
-import RandomButton from '../Menu/RandomButton/RandomButton';
+import RandomButton from '../Menu/Buttons/RandomButton';
 
 const Sidebar = () => {
 	const { setKeyboard } = useTagStore((state) => state);

@@ -1,4 +1,4 @@
-import CopyButton from './Menu/CopyButton/CopyButton';
+import CopyButton from './Menu/Buttons/CopyButton';
 import TagDisplay from './TagDisplay/TagDisplay';
 import Header from './Header/Header';
 import Keyboard from './Keyboard/Keyboard';
