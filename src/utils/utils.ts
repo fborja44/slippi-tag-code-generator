@@ -39,7 +39,7 @@ export const generateCode = (tag: string) => {
 	result = addMiddleSpace(result.padEnd(16, '0'));
 
 	return `$Optional: Force Nametag '${tag}' for Local Player [Fizzi]
-*When playing online, nametag ____ will show above 
+*When playing online, nametag '${tag}' will show above 
 *your character.
 *Will not cause desyncs when playing online
 C20355B4 00000008 #Force Nametag

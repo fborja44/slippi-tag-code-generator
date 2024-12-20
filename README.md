@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# 🦎 Melee Tag Gecko Code Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a utility tool to generate gecko codes for use with [Slippi](https://slippi.gg/) and Super Smash Bros. Melee which forces a tag in-game for online matches.
 
-Currently, two official plugins are available:
+Designed after the in-game keyboard for tag entry.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Usage
 
-## Expanding the ESLint configuration
+1. Enter the desired code using the keyboard interface, or your own keyboard
+2. Press the copy button to copy the code to your clipboard
+3. Open the Slippi Launcher and go to Settings
+4. Navigate to the Netplay page under Dolphin Settings
+5. Click on Manage Gecko Codes
+6. Open the Add tab and paste your code and click the Add Button
+7. You're ready to go!
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The code generated is as follows:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+$Optional: Force Nametag for Local Player [Fizzi]
+*When playing online, nametag ____ will show above your character. ---------------------
+*Will not cause desyncs when playing online
+C20355B4 00000008 #Force Nametag
+3C608048 80639D30
+5463443E 2C030208
+40820028 806DB61C
+88630000 7C03F800
+40820018 38600000
+3D808003 618C55CC
+7D8903A6 4E800420
+1C9F0E90 00000000
+C22FD1EC 0000000E
+48000010 4E800021
+XXXXXXXX XXXXXX00  #CHARACTER CODES GO HERE
+3C608048 80639D30
+5463443E 2C030208
+40820020 806DB61C
+88630000 7C03D800
+40820010 4BFFFFD1
+7C6802A6 4800002C
+7F63DB78 3D808003
+618C556C 7D8903A6
+4E800421 5463063E
+3D808023 618C754C
+7D8903A6 4E800421
+60000000 00000000
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## TODO
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- [x] Melee Keyboard
+- [ ] Support up to 7 Characters
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Credits
+
+🐸 Thanks to [Fizzi](https://x.com/fizzi36) for the original Gecko Code
+
+💻 Thanks to A_Big_Teletubby on Reddit for the [Character Code Spreadsheet](https://drive.google.com/file/d/1LGljYcGwInlH1XBJmEtR5_fEZrMZ3osU/view)
+
+🔊 Sounds from Super Smash Bros. Melee for the Nintendo GameCube
