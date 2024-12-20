@@ -1,4 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { useEffect } from 'react';
+import useTagStore from '../../store/tagStore';
 
 interface PopupProps {
 	isOpen: boolean;
@@ -17,6 +19,12 @@ const Popup = ({
 	actions,
 	icon,
 }: PopupProps) => {
+	const { setKeyboardEnabled } = useTagStore((state) => state);
+
+	useEffect(() => {
+		setKeyboardEnabled(!isOpen);
+	}, [isOpen, setKeyboardEnabled]);
+
 	return (
 		<Dialog
 			open={isOpen}

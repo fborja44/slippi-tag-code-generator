@@ -14,6 +14,8 @@ export interface TagState {
 	removeKeyPressed: (key: string) => void;
 	muted: boolean;
 	setMuted: (muted: boolean) => void;
+	keyboardEnabled: boolean;
+	setKeyboardEnabled: (enable: boolean) => void;
 }
 
 const useTagStore = create<TagState>()((set) => ({
@@ -55,6 +57,8 @@ const useTagStore = create<TagState>()((set) => ({
 		}),
 	muted: false,
 	setMuted: (muted) => set(() => ({ muted })),
+	keyboardEnabled: false,
+	setKeyboardEnabled: (enabled) => set(() => ({ keyboardEnabled: enabled })),
 }));
 
 export default useTagStore;

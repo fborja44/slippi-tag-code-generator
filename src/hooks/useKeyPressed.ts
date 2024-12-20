@@ -12,11 +12,16 @@ import useControls from './useControls';
 const useKeyPressed = (key: string) => {
 	const [isPressed, setIsPressed] = useState(false);
 	const { type, backspace } = useControls();
-	const { keyboard, setKeyboard } = useTagStore((state) => state);
+	const { keyboard, setKeyboard, keyboardEnabled } = useTagStore(
+		(state) => state
+	);
 
 	useEffect(() => {
 		// Key Down Handler
 		const handleKeyDown = (e: KeyboardEvent) => {
+			// Disable if a popup is open
+			if (!keyboardEnabled) return;
+
 			e.preventDefault();
 
 			// Change Keyboards automatically
@@ -76,7 +81,11 @@ const useKeyPressed = (key: string) => {
 
 		// Key Up Handler
 		const handleKeyUp = (e: KeyboardEvent) => {
+			// Disable if a popup is open
+			if (!keyboardEnabled) return;
+
 			e.preventDefault();
+
 			if (
 				e.key === key ||
 				e.key.toLowerCase() === key ||
