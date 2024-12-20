@@ -5,7 +5,7 @@ import Keyboard from './Keyboard/Keyboard';
 import Footer from './Footer/Footer';
 import Sidebar from './Sidebar/Sidebar';
 import CodePopup from './Popup/CodePopup';
-import BackspaceButton from './Menu/BackspaceButton/BackspaceButton';
+import BackspaceButton from './Menu/Buttons/BackspaceButton';
 
 const App = () => {
 	return (

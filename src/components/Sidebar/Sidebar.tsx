@@ -1,9 +1,9 @@
 import { KeyboardSet } from '../../types/types';
 import useTagStore from '../../store/tagStore';
-import AlphabetButton from '../Menu/AlphabetButton/AlphabetButton';
+import AlphabetButton from '../Menu/Buttons/AlphabetButton';
 import ClearButton from '../Menu/SidebarButton/ClearButton';
 import AudioButton from '../Menu/SidebarButton/AudioButton';
-import BackspaceButton from '../Menu/BackspaceButton/BackspaceButton';
+import BackspaceButton from '../Menu/Buttons/BackspaceButton';
 import RandomButton from '../Menu/RandomButton/RandomButton';
 
 const Sidebar = () => {
