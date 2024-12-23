@@ -2,19 +2,20 @@ import useTagStore from '../../store/tagStore';
 import Cursor from '../../assets/cursor.svg?react';
 
 const TagDisplay = () => {
-	const { tag } = useTagStore((state) => state);
+	const { tag, code } = useTagStore();
 
 	const tagArray = tag
 		.split('')
-		.concat(Array.from({ length: 4 + -tag.length }, () => ''));
+		.concat(Array.from({ length: 8 + -tag.length }, () => ''));
 
 	return (
-		<div className='container-col gap-4'>
-			<div className='container-row justify-between w-[300px] h-[68px] px-[40px] sm:w-[400px] sm:px-[75px] text-5xl md:h-20 md:w-[448px] md:text-6xl text-black bg-menu-blue border-4 border-menu-blue-dark rounded-2xl'>
-				{/* <input
+		<div className='relative'>
+			<div className='container-col gap-4'>
+				<div className='container-row justify-between w-[320px] h-[68px] px-[14px] sm:w-[400px] sm:px-[34px] text-5xl md:h-20 md:w-[490px] md:text-6xl text-black bg-menu-blue border-4 border-menu-blue-dark rounded-2xl'>
+					{/* <input
 					type='text'
 					className='bg-transparent text-black placeholder:text-black/30 w-full h-full text-center text-6xl font-bold tracking-[0.5em] outline-none'
-					maxLength={4}
+					maxLength={4}s
 					placeholder='TAG!'
 					value={tag}
 					onChange={(event) => {
@@ -24,13 +25,25 @@ const TagDisplay = () => {
 						}
 					}}
 				/> */}
-				{tagArray.map((char, i) => (
-					<TagCharacter
-						character={char}
-						key={`tag-${char}-${i}`}
-						cursor={i === tag.length || (char.length > 0 && i === 3)}
-					/>
-				))}
+					{tagArray.map((char, i) => (
+						<TagCharacter
+							character={char}
+							key={`tag-${char}-${i}`}
+							cursor={i === tag.length || (char.length > 0 && i === 7)}
+						/>
+					))}
+				</div>
+			</div>
+			<div
+				className={`absolute -top-5 right-0 sm:top-auto sm:left-[102%] sm:bottom-0 text-xs sm:text-base lg:text-lg ${
+					code.length === 16
+						? 'text-melee-red'
+						: code.length >= 14
+						? 'text-menu-yellow'
+						: ''
+				}`}
+			>
+				<span>{code.length}/16</span>
 			</div>
 		</div>
 	);
@@ -45,10 +58,10 @@ interface TagCharacterProps {
 
 const TagCharacter = ({ character, cursor }: TagCharacterProps) => {
 	return (
-		<div className='relative w-16 md:w-20 h-full text-center'>
-			<span>{character}</span>
+		<div className='relative w-12 max-w-12 md:w-14 md:max-w-14 h-full text-center'>
+			<span className='absolute left-1/2 -translate-x-1/2'>{character}</span>
 			{cursor && (
-				<Cursor className='absolute h-4 md:h-5 left-1/2 -translate-x-1/2 -bottom-0.5' />
+				<Cursor className='absolute h-3 md:h-4 left-1/2 -translate-x-1/2 -bottom-0.5' />
 			)}
 		</div>
 	);

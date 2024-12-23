@@ -45,6 +45,9 @@ export default {
 			fontFamily: {
 				melee: ['A-OTF Folk Pro B', 'sans-serif'],
 			},
+			screens: {
+				md: '900px',
+			},
 		},
 	},
 	plugins: [],

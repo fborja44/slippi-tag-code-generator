@@ -1,9 +1,11 @@
 import { create } from 'zustand';
 import { charSet } from '../data/codes';
 import { KeyboardSet } from '../types/types';
+import { getTagCode } from '../utils/utils';
 
 export interface TagState {
 	tag: string;
+	code: string;
 	keyboard: KeyboardSet;
 	keysPressed: Set<string>;
 	updateTag: (newTag: string) => void;
@@ -20,27 +22,38 @@ export interface TagState {
 
 const useTagStore = create<TagState>()((set) => ({
 	tag: '',
+	code: '',
 	keyboard: KeyboardSet.englishLower,
 	keysPressed: new Set(),
-	updateTag: (newTag) => set(() => ({ tag: newTag })),
+	updateTag: (newTag) =>
+		set(() => {
+			if (!newTag.split('').every((char) => charSet.has(char))) return {};
+			const newCode = getTagCode(newTag, false);
+			if (newCode.length > 16) return {};
+
+			return { tag: newTag, code: newCode };
+		}),
 	addCharacter: (character) =>
 		set(({ tag }) => {
 			// Filter invalid characters
 			if (!charSet.has(character)) return {};
 
-			if (tag.length < 4) {
-				// Append character
-				return { tag: tag + character };
-			} else if (tag.length === 4) {
-				// Replace last character
-				return { tag: tag.slice(0, 3) + character };
-			}
-			return {};
+			// Check if new character will fit
+			const newTag = tag + character;
+			const newCode = getTagCode(newTag, false);
+
+			if (newCode.length > 16) return {};
+
+			return { tag: newTag, code: getTagCode(newTag, false) };
 		}),
 	removeCharacter: () =>
 		set(({ tag }) => {
 			if (tag.length > 0) {
-				return { tag: tag.slice(0, -1) };
+				const newTag = tag.slice(0, -1);
+				return {
+					tag: newTag,
+					code: getTagCode(newTag, false),
+				};
 			}
 			return {};
 		}),

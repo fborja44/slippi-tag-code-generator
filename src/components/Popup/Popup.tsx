@@ -1,6 +1,7 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { useEffect } from 'react';
 import useTagStore from '../../store/tagStore';
+import useAudio from '../../hooks/useAudio';
 
 interface PopupProps {
 	isOpen: boolean;
@@ -19,7 +20,8 @@ const Popup = ({
 	actions,
 	icon,
 }: PopupProps) => {
-	const { setKeyboardEnabled } = useTagStore((state) => state);
+	const { setKeyboardEnabled } = useTagStore();
+	const { playAudio } = useAudio('/audio/cancel.wav');
 
 	useEffect(() => {
 		setKeyboardEnabled(!isOpen);
@@ -30,7 +32,10 @@ const Popup = ({
 			open={isOpen}
 			as='section'
 			className='relative z-10 focus:outline-none'
-			onClose={onClose}
+			onClose={() => {
+				onClose();
+				playAudio();
+			}}
 		>
 			<div className='fixed inset-0 z-10 w-screen overflow-y-auto bg-black/30 backdrop-blur-md duration-300'>
 				<div className='flex min-h-full items-center justify-center p-4'>

@@ -5,7 +5,7 @@ const PopupButton = ({
 	onClick,
 	children,
 }: ButtonHTMLAttributes<HTMLButtonElement>) => {
-	const { playAudio: playSelect } = useAudio('/audio/select.wav');
+	const { playAudio: playCancel } = useAudio('/audio/cancel.wav');
 	const { playAudio: playError } = useAudio('/audio/error.wav');
 
 	return (
@@ -13,7 +13,7 @@ const PopupButton = ({
 			onClick={(e) => {
 				if (onClick) {
 					onClick(e);
-					playSelect();
+					playCancel();
 				} else {
 					playError();
 				}

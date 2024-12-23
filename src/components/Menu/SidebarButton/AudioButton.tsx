@@ -5,7 +5,7 @@ import { FaVolumeMute } from 'react-icons/fa';
 import useAudio from '../../../hooks/useAudio';
 
 const AudioButton = () => {
-	const { muted, setMuted } = useTagStore((state) => state);
+	const { muted, setMuted } = useTagStore();
 	const { playAudio } = useAudio('/audio/select.wav');
 
 	return (

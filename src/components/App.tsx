@@ -11,7 +11,7 @@ const App = () => {
 	return (
 		<>
 			<Header />
-			<main className='flex flex-col items-center md:flex-row justify-center gap-3 h-full py-4 sm:py-6 md:py-10 px-4 mx-auto w-fit'>
+			<main className='flex flex-col items-center md:flex-row justify-center gap-3 h-full py-6 md:py-10 px-4 mx-auto w-fit'>
 				<section className='container-col gap-3 w-fit'>
 					<TagDisplay />
 					<Keyboard />

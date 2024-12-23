@@ -9,7 +9,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 const CodePopup = () => {
 	const { isOpen, open, close } = usePopup();
-	const { tag } = useTagStore((state) => state);
+	const { tag } = useTagStore();
 
 	return (
 		<>

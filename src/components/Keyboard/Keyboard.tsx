@@ -11,7 +11,7 @@ import {
 import useKeyPressed from '../../hooks/useKeyPressed';
 
 const Keyboard = () => {
-	const { keyboard } = useTagStore((state) => state);
+	const { keyboard } = useTagStore();
 
 	const shiftIsPressed = useKeyPressed('Shift'); // Handle Shift key
 

@@ -1,21 +1,27 @@
-import { charSet } from '../data/codes';
+import codeSet, { charSet } from '../data/codes';
 import useTagStore from '../store/tagStore';
 import useAudio from './useAudio';
 
 const useControls = () => {
-	const { updateTag, addCharacter, removeCharacter } = useTagStore(
+	const { code, updateTag, addCharacter, removeCharacter } = useTagStore(
 		(state) => state
 	);
 	const { playAudio: playSelect } = useAudio('/audio/select.wav');
 	const { playAudio: playCancel } = useAudio('/audio/cancel.wav');
 	const { playAudio: playMove } = useAudio('/audio/move.wav', 0.05);
+	const { playAudio: playError } = useAudio('/audio/error.wav');
 
 	const type = (character: string) => {
-		if (character.length > 1) return;
-		if (charSet.has(character)) {
-			addCharacter(character);
-			playSelect();
+		if (!charSet.has(character)) {
+			return playError();
 		}
+
+		if (code.length + codeSet[character].length > 16) {
+			return playError();
+		}
+
+		addCharacter(character);
+		playSelect();
 	};
 
 	const backspace = () => {
@@ -29,7 +35,7 @@ const useControls = () => {
 	};
 
 	const fill = (tag: string) => {
-		if (tag.length <= 4 && tag.split('').every((char) => charSet.has(char))) {
+		if (tag.split('').every((char) => charSet.has(char))) {
 			playSelect();
 			updateTag(tag);
 		}

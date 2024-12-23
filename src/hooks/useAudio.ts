@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import useTagStore from '../store/tagStore';
 
 const useAudio = (audioPath: string, volume: number = 0.05) => {
-	let { muted } = useTagStore((state) => state);
+	let { muted } = useTagStore();
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 
 	const playAudio = (sourceMuted: boolean | undefined = undefined) => {

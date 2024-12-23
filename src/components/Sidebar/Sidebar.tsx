@@ -7,7 +7,7 @@ import BackspaceButton from '../Menu/Buttons/BackspaceButton';
 import RandomButton from '../Menu/Buttons/RandomButton';
 
 const Sidebar = () => {
-	const { setKeyboard } = useTagStore((state) => state);
+	const { setKeyboard } = useTagStore();
 	return (
 		<section className='container-col items-end gap-4 self-end w-full md:w-fit'>
 			<div className='hidden md:block w-full'>

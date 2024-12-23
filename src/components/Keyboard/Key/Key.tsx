@@ -1,5 +1,7 @@
 import useKeyPressed from '../../../hooks/useKeyPressed';
 import useControls from '../../../hooks/useControls';
+import useTagStore from '../../../store/tagStore';
+import codeSet, { charSet } from '../../../data/codes';
 
 interface KeyProps {
 	character: string;
@@ -7,9 +9,13 @@ interface KeyProps {
 
 const Key = ({ character }: KeyProps) => {
 	const isPressed = useKeyPressed(character);
+	const { code } = useTagStore();
 	const { type } = useControls();
 
-	if (character.length !== 1) return null;
+	if (character.length !== 1 || !charSet.has(character)) return null;
+
+	const newCode = code + codeSet[character];
+	const disabled = newCode.length > 16;
 
 	return (
 		<button
@@ -19,9 +25,11 @@ const Key = ({ character }: KeyProps) => {
 				!isPressed
 					? 'bg-menu-bg text-menu-gold-light'
 					: 'bg-menu-yellow text-black'
+			} ${
+				disabled ? 'brightness-[60%]' : ''
 			} border-menu-gold-dark  hover:bg-menu-gold hover:text-black  active:bg-menu-yellow`}
 		>
-			{character}
+			<span>{character}</span>
 		</button>
 	);
 };

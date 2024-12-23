@@ -14,7 +14,7 @@ const AlphabetButton = ({
 	onClick,
 	keyboardSet,
 }: AlphabetButton) => {
-	const { keyboard } = useTagStore((state) => state);
+	const { keyboard } = useTagStore();
 	const { playAudio: playSelect } = useAudio('/audio/select.wav');
 	const { playAudio: playError } = useAudio('/audio/error.wav');
 	// const { move } = useControls();

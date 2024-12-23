@@ -20,6 +20,22 @@ export const addMiddleSpace = (str: string) => {
 };
 
 /**
+ * Generates the code string for a tag.
+ * @param tag The tag to get the code for.
+ * @returns The code string for the given tag based on the codeset.
+ */
+export const getTagCode = (tag: string, pad: boolean = true) => {
+	let result = '';
+	for (const char of tag) {
+		result += codeSet[char];
+	}
+	if (pad) {
+		result = addMiddleSpace(result.padEnd(16, '0'));
+	}
+	return result;
+};
+
+/**
  * Vanilla Behavior allows 4 characters of ANY type.
  * @param tag The tag to generate a gecko code for.
  * @returns The final code if valid. Otherwise, returns null.
@@ -31,12 +47,8 @@ export const generateCode = (tag: string) => {
 	// Invalid character
 	if (tag.split('').some((char) => !charSet.has(char))) return null;
 
-	// Map characters to string, pad with 0s
-	let result = '';
-	for (const char of tag) {
-		result += codeSet[char];
-	}
-	result = addMiddleSpace(result.padEnd(16, '0'));
+	// Generate code
+	const code = getTagCode(tag);
 
 	return `$Optional: Force Nametag '${tag}' for Local Player [Fizzi]
 *When playing online, nametag '${tag}' will show above 
@@ -53,7 +65,7 @@ C20355B4 00000008 #Force Nametag
 1C9F0E90 00000000
 C22FD1EC 0000000E
 48000010 4E800021
-${result} #Code for '${tag}'
+${code} #Code for '${tag}'
 3C608048 80639D30
 5463443E 2C030208
 40820020 806DB61C
