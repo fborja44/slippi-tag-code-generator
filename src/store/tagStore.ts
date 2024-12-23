@@ -4,6 +4,8 @@ import { KeyboardSet } from '../types/types';
 import { getTagCode } from '../utils/utils';
 import { MAX_LENGTH } from '../constants';
 
+const localMuted = localStorage.getItem('muted');
+
 export interface TagState {
 	tag: string;
 	code: string;
@@ -69,8 +71,12 @@ const useTagStore = create<TagState>()((set) => ({
 			newKeysPressed.delete(key);
 			return { keysPressed: newKeysPressed };
 		}),
-	muted: false,
-	setMuted: (muted) => set(() => ({ muted })),
+	muted: localMuted !== null ? JSON.parse(localMuted) : false,
+	setMuted: (muted) =>
+		set(() => {
+			localStorage.setItem('muted', JSON.stringify(muted));
+			return { muted };
+		}),
 	keyboardEnabled: false,
 	setKeyboardEnabled: (enabled) => set(() => ({ keyboardEnabled: enabled })),
 }));
