@@ -200,7 +200,7 @@ export const SymbolKeyboard: string[] = [
 	'~',
 	'|',
 	// Row 3
-	'%',
+	'#',
 	'(',
 	')',
 	'{',
@@ -210,12 +210,12 @@ export const SymbolKeyboard: string[] = [
 	'<',
 	'>',
 	// Row 4
-	'#',
 	'・',
 	'^',
 	'_',
 	'ー',
 	'×',
+	' ',
 	' ',
 	' ',
 	' ',

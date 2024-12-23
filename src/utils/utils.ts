@@ -51,7 +51,7 @@ export const generateCode = (tag: string) => {
 	const code = getTagCode(tag);
 
 	return `$Optional: Force Nametag '${tag}' for Local Player [Fizzi]
-*When playing online, nametag '${tag}' will show above 
+*When playing online, custom nametag will show above 
 *your character.
 *Will not cause desyncs when playing online
 C20355B4 00000008 #Force Nametag
@@ -65,7 +65,7 @@ C20355B4 00000008 #Force Nametag
 1C9F0E90 00000000
 C22FD1EC 0000000E
 48000010 4E800021
-${code} #Code for '${tag}'
+${code} #Custom Code
 3C608048 80639D30
 5463443E 2C030208
 40820020 806DB61C
