@@ -38,7 +38,7 @@ const AlphabetButton = ({
 					: 'bg-black text-menu-neutral'
 			} border-4 border-menu-neutral w-20 h-16 rounded-xl lg:w-24 lg:h-20 lg:rounded-2xl px-2 py-1.5 hover:bg-menu-yellow hover:text-black active:bg-menu-gold`}
 		>
-			<span className='text-[68px] lg:text-[80px] leading-none absolute -top-3.5 left-0 right-0 m-auto'>
+			<span className='text-[68px] lg:text-[80px] leading-none absolute -top-3.5 left-0 right-0 m-auto pointer-events-none'>
 				{character}
 			</span>
 		</button>
