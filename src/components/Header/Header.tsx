@@ -4,7 +4,7 @@ import HelpPopup from '../Popup/HelpPopup';
 
 const Header = () => {
 	return (
-		<header className='container-row justify-between w-full h-[64px] text-midnight-400 px-4 sm:px-6 md:px-8'>
+		<header className='container-row justify-between w-full h-[64px] text-midnight-400 px-4 sm:px-6 lg:px-8'>
 			<div className='container-row gap-2.5'>
 				<GiGecko className='w-9 h-9 lg:w-7 lg:h-7' />
 				<h1 className='hidden md:block text-xl font-bold'>
