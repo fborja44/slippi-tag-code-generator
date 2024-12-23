@@ -49,7 +49,7 @@ XXXXXXXX XXXXXX00  #CHARACTER CODES GO HERE
 ## TODO
 
 - [x] Melee Keyboard
-- [ ] Support up to 7 Characters
+- [x] Support up to 7 Characters
 
 ## Credits
 
