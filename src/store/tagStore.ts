@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { charSet } from '../data/codes';
 import { KeyboardSet } from '../types/types';
 import { getTagCode } from '../utils/utils';
+import { MAX_LENGTH } from '../constants';
 
 export interface TagState {
 	tag: string;
@@ -29,7 +30,7 @@ const useTagStore = create<TagState>()((set) => ({
 		set(() => {
 			if (!newTag.split('').every((char) => charSet.has(char))) return {};
 			const newCode = getTagCode(newTag, false);
-			if (newCode.length > 16) return {};
+			if (newCode.length > MAX_LENGTH) return {};
 
 			return { tag: newTag, code: newCode };
 		}),
@@ -42,7 +43,7 @@ const useTagStore = create<TagState>()((set) => ({
 			const newTag = tag + character;
 			const newCode = getTagCode(newTag, false);
 
-			if (newCode.length > 16) return {};
+			if (newCode.length > MAX_LENGTH) return {};
 
 			return { tag: newTag, code: getTagCode(newTag, false) };
 		}),

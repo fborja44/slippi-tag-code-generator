@@ -7,7 +7,7 @@ import { createMenuButtonClass } from '../MenuButton/style';
 import useAudio from '../../../hooks/useAudio';
 
 const CopyButton = () => {
-	const { tag } = useTagStore((state: TagState) => state);
+	const { tag, code } = useTagStore((state: TagState) => state);
 	const [copied, setCopied] = useState(false);
 	const { playAudio } = useAudio('/audio/select.wav');
 
@@ -21,12 +21,14 @@ const CopyButton = () => {
 		return () => clearInterval(interval);
 	}, [copied]);
 
-	const code = generateCode(tag);
 	return (
-		<CopyToClipboard onCopy={() => setCopied(true)} text={code ?? ''}>
+		<CopyToClipboard
+			onCopy={() => setCopied(true)}
+			text={generateCode(tag) ?? ''}
+		>
 			<button
 				className={`${createMenuButtonClass(false)} flex-grow`}
-				disabled={!code}
+				disabled={code.length > 16}
 				onClick={() => playAudio()}
 			>
 				<span>

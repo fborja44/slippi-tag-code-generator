@@ -1,3 +1,4 @@
+import { MAX_LENGTH } from '../constants';
 import codeSet, { charSet } from '../data/codes';
 import useTagStore from '../store/tagStore';
 import useAudio from './useAudio';
@@ -16,7 +17,7 @@ const useControls = () => {
 			return playError();
 		}
 
-		if (code.length + codeSet[character].length > 16) {
+		if (code.length + codeSet[character].length > MAX_LENGTH) {
 			return playError();
 		}
 

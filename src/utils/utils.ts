@@ -32,7 +32,7 @@ export const getTagCode = (tag: string, pad: boolean = true) => {
 	if (pad) {
 		result = addMiddleSpace(result.padEnd(16, '0'));
 	}
-	return result;
+	return result.toUpperCase();
 };
 
 /**
@@ -42,7 +42,7 @@ export const getTagCode = (tag: string, pad: boolean = true) => {
  */
 export const generateCode = (tag: string) => {
 	// Invalid length
-	if (tag.length > 4) return null;
+	if (tag.length > 8) return null;
 
 	// Invalid character
 	if (tag.split('').some((char) => !charSet.has(char))) return null;

@@ -52,7 +52,7 @@ const Popup = ({
 								{title && <span>{title}</span>}
 							</DialogTitle>
 						)}
-						<div className='w-fit bg-black/50 rounded-2xl'>{children}</div>
+						<div className='w-full bg-black/50 rounded-2xl'>{children}</div>
 						{actions && (
 							<div className='container-row justify-center mt-1 w-full'>
 								{actions}

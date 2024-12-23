@@ -2,6 +2,7 @@ import useKeyPressed from '../../../hooks/useKeyPressed';
 import useControls from '../../../hooks/useControls';
 import useTagStore from '../../../store/tagStore';
 import codeSet, { charSet } from '../../../data/codes';
+import { MAX_LENGTH } from '../../../constants';
 
 interface KeyProps {
 	character: string;
@@ -15,7 +16,7 @@ const Key = ({ character }: KeyProps) => {
 	if (character.length !== 1 || !charSet.has(character)) return null;
 
 	const newCode = code + codeSet[character];
-	const disabled = newCode.length > 16;
+	const disabled = newCode.length > MAX_LENGTH;
 
 	return (
 		<button

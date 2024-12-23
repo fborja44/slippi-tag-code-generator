@@ -26,8 +26,8 @@ const CodePopup = () => {
 				icon={<HiMiniMagnifyingGlassCircle className='w-10 h-10' />}
 				actions={<PopupButton onClick={close}>Close</PopupButton>}
 			>
-				<code className='block overflow-y-auto whitespace-pre-line py-4 px-5 h-80 text-sm scrollbar-hide'>
-					{generateCode(tag)}
+				<code className='block w-full overflow-y-auto whitespace-pre-line py-4 px-5 h-80 text-sm scrollbar-hide'>
+					{generateCode(tag) ?? 'Invalid Tag'}
 				</code>
 			</Popup>
 		</>

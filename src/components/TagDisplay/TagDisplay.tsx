@@ -1,12 +1,13 @@
 import useTagStore from '../../store/tagStore';
 import Cursor from '../../assets/cursor.svg?react';
+import { MAX_LENGTH } from '../../constants';
 
 const TagDisplay = () => {
 	const { tag, code } = useTagStore();
 
 	const tagArray = tag
 		.split('')
-		.concat(Array.from({ length: 8 + -tag.length }, () => ''));
+		.concat(Array.from({ length: MAX_LENGTH / 2 + -tag.length }, () => ''));
 
 	return (
 		<div className='relative'>
@@ -29,21 +30,26 @@ const TagDisplay = () => {
 						<TagCharacter
 							character={char}
 							key={`tag-${char}-${i}`}
-							cursor={i === tag.length || (char.length > 0 && i === 7)}
+							cursor={
+								i === tag.length ||
+								(char.length > 0 && i === MAX_LENGTH / 2 - 1)
+							}
 						/>
 					))}
 				</div>
 			</div>
 			<div
-				className={`absolute -top-5 right-0 sm:top-auto sm:left-[102%] sm:bottom-0 text-xs sm:text-base lg:text-lg ${
-					code.length === 16
+				className={`absolute -top-5 right-0 sm:top-auto sm:left-[102%] sm:bottom-0 text-xs sm:text-base lg:text-lg text-midnight-400 ${
+					code.length === MAX_LENGTH
 						? 'text-melee-red'
-						: code.length >= 14
+						: code.length >= MAX_LENGTH - 2
 						? 'text-menu-yellow'
 						: ''
 				}`}
 			>
-				<span>{code.length}/16</span>
+				<span>
+					{code.length}/{MAX_LENGTH}
+				</span>
 			</div>
 		</div>
 	);
